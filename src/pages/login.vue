@@ -10,8 +10,8 @@ import authV1Tree from '@images/pages/auth-v1-tree.png'
 import { useAuth } from '@/composable/useAuth'
 
 const form = ref({
-  username: 'anson',
-  password: 'password',
+  username: 'user',
+  password: '4321',
 })
 
 const vuetifyTheme = useTheme()
