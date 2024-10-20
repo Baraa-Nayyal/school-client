@@ -65,7 +65,7 @@ const handleNavScroll = (evt: Event) => {
           />
 
           <h1 class="font-weight-medium leading-normal text-xl text-uppercase">
-            Materio
+            Afak
           </h1>
         </RouterLink>
       </slot>
