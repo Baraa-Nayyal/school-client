@@ -1,7 +1,7 @@
 // ! DONT TOUCH THIS FILE
 // import { axiosIns } from '@/core/libs';
 // import { EmployeeApi } from '@/api/Employee/endpoints'
-import { API_URL } from '@/app.config'
+import { API_URL, HOST_DOMAIN } from '@/app.config'
 import { useApi } from '@/composable/useApi'
 import { axiosIns } from '@/plugins/axios'
 import { router } from '@/plugins/router'
@@ -20,7 +20,7 @@ interface useAuthconfig {
 
 const authConfig: useAuthconfig = {
   baseUrl: API_URL,
-  loginEndpoint: 'http://localhost:3000/auth/login',
+  loginEndpoint: `${HOST_DOMAIN}/auth/login`,
   refreshTokenEndPoint: 'Employee/RefreshToken',
   key: 'bronz',
 }
