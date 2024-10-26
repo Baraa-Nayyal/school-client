@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <div>hello details</div>
+  <div>Coming Soon</div>
 </template>

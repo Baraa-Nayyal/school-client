@@ -52,7 +52,6 @@ export const useApi = () => {
   //Global error handler
   const handleErrorMessage = ({ response }: AxiosError | any, notifications: string | boolean) => {
     if (typeof notifications == 'boolean' && response) {
-
       if (response.data) {
         if (Array.isArray(response.data.message)) {
           const errorMessage = response.data.message.join('\n')
@@ -130,10 +129,9 @@ export const useApi = () => {
         params: { ...params },
         ...config,
         headers: {
-          lang: localStorage.getItem('bronz-language'),
+          lang: localStorage.getItem('afak-language'),
         },
       })
-
 
       return { ...response, data: response.data as T }
     } catch (error) {
@@ -158,7 +156,7 @@ export const useApi = () => {
           {
             ...config,
             headers: {
-              lang: localStorage.getItem('bronz-language'),
+              lang: localStorage.getItem('afak-language'),
             },
           },
         )
@@ -169,7 +167,7 @@ export const useApi = () => {
           {
             ...config,
             headers: {
-              lang: localStorage.getItem('bronz-language'),
+              lang: localStorage.getItem('afak-language'),
             },
           },
         )
@@ -218,7 +216,6 @@ export const useApi = () => {
                 resolve(res)
               })
               .catch((er: any) => {
-
                 if (typeof notify.error === 'boolean' || typeof notify.error === 'string')
                   handleErrorMessage(er, notify.error)
                 reject(er)

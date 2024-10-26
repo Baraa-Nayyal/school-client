@@ -17,7 +17,7 @@ const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
     icon: 'ri-home-smile-line',
-    title: `تفاصيل الفاتورة `,
+    title: `Invoice Details `,
   })
   store.GetInvoiceById(id).then(() => {
     invoiceDetails.value = invoiceDetails.value
@@ -35,8 +35,8 @@ const close = () => {
 }
 
 const headers = [
-  { title: 'المدفوع من الأوتوكار', value: 'paidBusAmount' },
-  { title: 'المدفوع من القسط', value: 'paidSchoolAmount' },
+  { title: 'Paid Bus', value: 'paidBusAmount' },
+  { title: 'Paid School', value: 'paidSchoolAmount' },
   { title: 'date', value: 'date' },
 ]
 
@@ -53,17 +53,17 @@ const paidAmount = computed(() => {
     button-text="إضافة دفعة"
   >
     <div class="flex gap-4 items-center justify-center mb-10">
-      <VCard title="القسط الأجمالي"
+      <VCard title="Total"
         ><VCardText class="text-center mx-auto w-full">{{
           Number(invoiceDetails?.totalAmount).toLocaleString()
         }}</VCardText></VCard
       >
-      <VCard title="القسط المدفوع"
+      <VCard title="Paid"
         ><VCardText class="text-center mx-auto w-full">{{
           Number(invoiceDetails?.totalPaid).toLocaleString()
         }}</VCardText></VCard
       >
-      <VCard title="القسط المتبقي"
+      <VCard title="Remaining"
         ><VCardText class="text-center mx-auto w-full">{{
           Number(invoiceDetails?.remainingAmount).toLocaleString()
         }}</VCardText></VCard
@@ -72,32 +72,32 @@ const paidAmount = computed(() => {
     <template #dialog-form>
       <div class="flex gap-3">
         <VTextField
-          label="المدفوع من الأوتوكار"
+          label="Paid Bus"
           type="number"
           v-model.number="addPaymentDto.paidBusAmount"
         />
         <VTextField
-          label="المدفوع من القسط"
+          label="Paid School"
           type="number"
           v-model.number="addPaymentDto.paidSchoolAmount"
         />
         <VTextField
-          label="رقم الوصل"
+          label="Receipt Number"
           class="w-4"
           type="number"
           v-model.number="addPaymentDto.receiptNumber"
         />
       </div>
       <div class="py-4 flex gap-2">
-        <VBtn @click="submit">إضافة</VBtn>
+        <VBtn @click="submit">Add</VBtn>
         <VBtn
           @click="close"
           variant="outlined"
-          >رجوع</VBtn
+          >Cancel</VBtn
         >
       </div>
     </template>
-    <VCard title="الدفعات">
+    <VCard title="Payments">
       <VDataTable
         :headers="headers"
         :items="invoiceDetails?.payments"

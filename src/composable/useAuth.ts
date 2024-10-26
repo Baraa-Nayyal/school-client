@@ -22,7 +22,7 @@ const authConfig: useAuthconfig = {
   baseUrl: API_URL,
   loginEndpoint: `${HOST_DOMAIN}/auth/login`,
   refreshTokenEndPoint: 'Employee/RefreshToken',
-  key: 'bronz',
+  key: 'afak',
 }
 
 enum BaseRoles {

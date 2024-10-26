@@ -19,8 +19,8 @@ const { invoicesList } = storeToRefs(store)
 const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
-    icon: 'ri-home-smile-line',
-    title: 'الأقساط',
+    icon: 'ri-cash-line',
+    title: 'Invoices',
   })
   store.GetInvoices().then(() => {
     invoicesList.value = invoicesList.value.map(invoice => ({
@@ -51,12 +51,12 @@ const submit = () => {
 }
 
 const headers = [
-  { title: 'الاسم', value: 'name' },
-  { title: 'قسط المدرسة', value: 'schoolPrice' },
-  { title: 'قسط الأوتوكار', value: 'busPrice' },
-  { title: 'الإجمالي', value: 'totalAmount' },
-  { title: 'المتبقي', value: 'remainingAmount' },
-  { title: 'التفاصيل', value: 'actions', align: 'center' },
+  { title: 'Name', value: 'name' },
+  { title: 'School Price', value: 'schoolPrice' },
+  { title: 'Bus Price', value: 'busPrice' },
+  { title: 'Total', value: 'totalAmount' },
+  { title: 'Remaining', value: 'remainingAmount' },
+  { title: 'Details', value: 'actions', align: 'center' },
 ]
 
 const activeSelection = ref('student')
@@ -72,11 +72,11 @@ const search = (val: string) => {
   <Page
     ref="InvoicesPage"
     icon="tabler-user"
-    button-text="إضافة قسط"
-    dialog-title="قسط جديد"
+    button-text="Add Invoice"
+    dialog-title="New Invoice"
     @update:search="search"
   >
-    <template #action-button><VBtn @click="open">إضافة</VBtn></template>
+    <template #action-button><VBtn @click="open">Add Invoice</VBtn></template>
 
     <template #dialog-form>
       <VRadioGroup
@@ -86,17 +86,17 @@ const search = (val: string) => {
       >
         <VRadio
           value="student"
-          label="قسط طالب "
+          label="Student Invoice "
         />
         <VRadio
           value="family"
-          label="قسط عائلة"
+          label="Family Invoice"
         />
       </VRadioGroup>
       <div class="flex gap-4 p-5">
         <VSelect
           v-if="activeSelection === 'student'"
-          label="اسم الطالب"
+          label="Student Name"
           class="w-1/2"
           v-model="addInvoiceDto.studentId"
           :items="studentsNamesList"
@@ -105,7 +105,7 @@ const search = (val: string) => {
         />
         <VSelect
           v-else
-          label="اسم العائلة"
+          label="Family Name"
           v-model="addInvoiceDto.familyId"
           class="w-1/2"
           :items="familiesNamesList"
@@ -113,28 +113,28 @@ const search = (val: string) => {
           item-value="_id"
         />
         <VTextField
-          label="قسط الأوتوكار"
+          label="Bus Price"
           type="number"
           v-model.number="addInvoiceDto.busPrice"
         />
         <VTextField
-          label="قسط المدرسة"
+          label="School Price"
           type="number"
           v-model.number="addInvoiceDto.schoolPrice"
         />
       </div>
       <div class="flex gap-3">
-        <VBtn @click="submit">إضافة</VBtn>
+        <VBtn @click="submit">Save</VBtn>
         <VBtn
           @click="close"
           variant="outlined"
-          >رجوع</VBtn
+          >Cancel</VBtn
         >
       </div>
     </template>
     <VDataTable
       :headers="(headers as any)"
-      :items="filtered"
+      :items="invoicesList"
     >
       <template #item.actions="{ item }">
         <div class="d-flex gap-1 justify-center">

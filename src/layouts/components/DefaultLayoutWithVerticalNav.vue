@@ -1,12 +1,17 @@
 <script lang="ts" setup>
-import NavItems from '@/layouts/components/NavItems.vue'
-import logo from '@images/logo.svg?raw'
-import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue'
+import NavItems from '@/layouts/components/NavItems.vue';
+import VerticalNavLayout from '@layouts/components/VerticalNavLayout.vue';
+// import logo from '@images/afakLogo.svg?raw'
 
 // Components
-import Footer from '@/layouts/components/Footer.vue'
-import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue'
-import UserProfile from '@/layouts/components/UserProfile.vue'
+import { useAuth } from '@/composable/useAuth';
+import NavbarThemeSwitcher from '@/layouts/components/NavbarThemeSwitcher.vue';
+
+const { LogOut } = useAuth()
+
+const Logout = () => {
+  LogOut()
+}
 </script>
 
 <template>
@@ -39,13 +44,13 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
 
         <VSpacer />
 
-        <!-- <IconBtn
-          href="https://github.com/themeselection/materio-vuetify-vuejs-admin-template-free"
+        <IconBtn
+          @click="Logout"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <VIcon icon="ri-github-fill" />
-        </IconBtn> -->
+          <VIcon icon="ri-logout-box-line" />
+        </IconBtn>
 
         <!-- <IconBtn>
           <VIcon icon="ri-notification-line" />
@@ -63,15 +68,21 @@ import UserProfile from '@/layouts/components/UserProfile.vue'
         class="app-logo app-title-wrapper"
       >
         <!-- eslint-disable vue/no-v-html -->
-        <div
-          class="d-flex"
-          v-html="logo"
-        />
+        <div class="w-10 h-fit">
+          <!-- <div
+            class="d-flex"
+            v-html="logo"
+          /> -->
+          <div class="w-10 h-10">
+            <img
+              class="w-full h-full object-contain"
+              src="../../assets/images/afakLogo.svg"
+            />
+          </div>
+        </div>
         <!-- eslint-enable -->
 
-        <h1 class="font-weight-medium leading-normal text-xl text-uppercase">
-          Materio
-        </h1>
+        <h1 class="font-weight-medium leading-normal text-xl ">Afak</h1>
       </RouterLink>
 
       <IconBtn

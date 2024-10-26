@@ -15,8 +15,8 @@ const { classesList } = storeToRefs(classesStore)
 const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
-    icon: 'ri-home-smile-line',
-    title: 'الطلاب',
+    icon: 'ri-user-smile-line',
+    title: 'Students',
   })
 
   store.GetAllStudents()
@@ -50,16 +50,16 @@ const divisionItems = computed(
 )
 
 const headers = [
-  { title: 'اسم الطالب', value: 'name' },
-  { title: 'الصف', value: 'class.name' },
+  { title: 'Student Name', value: 'name' },
+  { title: 'Class', value: 'class.name' },
   // { title: 'الشعبة', value: 'division.name' },
-  { title: 'تفاصيل', value: 'actions', align: 'center' },
+  { title: 'Details', value: 'actions', align: 'center' },
 ]
 
 const headers2 = [
-  { title: 'اسم العائلة', value: 'familyName' },
-  { title: 'الطلاب', value: 'students' },
-  { title: 'تفاصيل', value: 'actions', align: 'center' },
+  { title: 'Family Name', value: 'familyName' },
+  { title: 'Students', value: 'students' },
+  { title: 'Details', value: 'actions', align: 'center' },
 ]
 
 const open = () => {
@@ -90,21 +90,21 @@ const search = (val: string) => {
   <Page
     ref="StudentsPage"
     icon="tabler-user"
-    button-text="إضافة جديد"
-    dialog-title="إضافة جديد"
+    button-text="Add"
+    dialog-title="Add New"
     @update:search="search"
   >
-    <template #action-button><VBtn @click="open">إضافة</VBtn></template>
+    <template #action-button><VBtn @click="open">Add</VBtn></template>
     <template #dialog-form>
       <div class="w-full">
         <VRadioGroup v-model="activeSection">
           <VRadio
             value="student"
-            label="طالب"
+            label="Student"
           />
           <VRadio
             value="family"
-            label="عائلة"
+            label="Family"
           />
         </VRadioGroup>
         <div
@@ -113,8 +113,8 @@ const search = (val: string) => {
         >
           <VTextField
             v-model="addStudentDto.name"
-            label="* اسم الطالب"
-            :rules="[v => !!v || 'اسم الطالب مطلوب']"
+            label="* Student Name"
+            :rules="[v => !!v || 'field is required']"
           />
           <VSelect
             v-model="addStudentDto.class"
@@ -122,7 +122,7 @@ const search = (val: string) => {
             :items="classesList"
             item-value="_id"
             item-title="name"
-            :rules="[v => !!v || 'اسم الطالب مطلوب']"
+            :rules="[v => !!v || 'field is required']"
           />
           <VSelect
             v-model="addStudentDto.division"
@@ -130,33 +130,33 @@ const search = (val: string) => {
             item-value="_id"
             item-title="name"
             label="*الشعبة"
-            :rules="[v => !!v || 'اسم الطالب مطلوب']"
+            :rules="[v => !!v || 'field is required']"
           />
           <VTextField
             v-model="addStudentDto.dadName"
-            label="اسم الأب"
+            label="Father's Name"
           />
           <VTextField
             v-model="addStudentDto.momName"
-            label="اسم الأم"
+            label="Mom's Name"
           />
           <VTextField
             v-model="addStudentDto.area"
-            label="المنطقة"
+            label="Area"
           />
           <VTextField
             v-model="addStudentDto.dadNumber"
-            label="رقم الأب"
+            label="Father's Number"
           />
           <VTextField
             v-model="addStudentDto.momNumber"
-            label="رقم الأم"
+            label="Mom's Number"
           />
           <VSelect
             v-model="addStudentDto.driver"
             item-value="_id"
             item-title="name"
-            label="السائق"
+            label="Driver"
           />
         </div>
 
@@ -165,11 +165,11 @@ const search = (val: string) => {
           class="p-5 flex gap-4"
         >
           <VTextField
-            label="اسم العائلة"
+            label="Family Name"
             v-model="addFamilyDto.familyName"
           />
           <VSelect
-            label="الطلاب"
+            label="Students"
             v-model="addFamilyDto.studentIds"
             :items="studentsNamesList"
             item-value="_id"
@@ -180,13 +180,13 @@ const search = (val: string) => {
 
         <div class="flex gap-2 flex-row-reverse">
           <VBtn @click="activeSection === 'student' ? submit() : submit2()">{{
-            activeSection === 'student' ? 'إضافة طالب' : 'إضافة عائلة'
+            activeSection === 'student' ? 'Add Student' : 'Add Family'
           }}</VBtn>
 
           <VBtn
             @click="close"
             variant="outlined"
-            >رجوع</VBtn
+            >Cancel</VBtn
           >
         </div>
       </div>
@@ -194,7 +194,7 @@ const search = (val: string) => {
     <div class="flex flex-col gap-3">
       <VDataTable
         :headers="(headers as any)"
-        :items="filtered"
+        :items="studentsList"
       >
         <template #item.actions="{ item }">
           <div class="d-flex gap-1 justify-center">

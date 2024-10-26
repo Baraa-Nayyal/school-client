@@ -13,7 +13,7 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
-    default: 'ابحث في الصفحة',
+    default: 'Search in page',
   },
   qury: {
     type: String,
@@ -129,30 +129,32 @@ const directUrl = () => {
         <div class="min-w-full flex-wrap sm:min-w-[450px] flex justify-end items-center lg:mt-0">
           <slot name="delete-btn" />
           <slot name="actions">
-            <VTextField
-              v-if="hasSearch"
-              class="min-w-[300px] mx-2"
-              type="text"
-              prepend-inner-icon="tabler-search"
-              :placeholder="props.placeholder"
-              @update:model-value="$emit('update:search', $event)"
-            />
-            <VBtn
-              v-if="direct"
-              @click="directUrl"
-              >{{ buttonText }}</VBtn
-            >
-          </slot>
-          <slot name="action-button">
-            <VBtn
-              @click="openDialog"
-              prepend-icon="tabler-plus"
-              v-if="add"
-              id="btn_btn"
-              variant="flat"
-            >
-              {{ buttonText }}
-            </VBtn>
+            <div class="flex items-center gap-2 w-full">
+              <VTextField
+                v-if="hasSearch"
+                class="w-full sm:w-[300px]"
+                type="text"
+                prepend-inner-icon="tabler-search"
+                :placeholder="props.placeholder"
+                @update:model-value="$emit('update:search', $event)"
+              />
+              <VBtn
+                v-if="direct"
+                @click="directUrl"
+                >{{ buttonText }}</VBtn
+              >
+              <slot name="action-button">
+                <VBtn
+                  @click="openDialog"
+                  prepend-icon="tabler-plus"
+                  v-if="add"
+                  id="btn_btn"
+                  variant="flat"
+                >
+                  {{ buttonText }}
+                </VBtn>
+              </slot>
+            </div>
           </slot>
           <VDialog
             v-model="dialog"

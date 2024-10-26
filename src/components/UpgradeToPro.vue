@@ -2,14 +2,11 @@
   <a
     color="error"
     class="buy-now-button"
-    href="https://themeselection.com/item/materio-vuetify-vuejs-admin-template/"
     target="_blank"
     rel="noopener noreferrer"
   >
-    Upgrade to Pro
-
+    More Infos
     <span class="button-inner" />
-
     <VMenu
       open-on-hover
       activator="parent"
@@ -19,6 +16,45 @@
       transition="slide-y-reverse-transition"
     >
       <VCard>
+        <VImg
+          src="https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-vuejs-admin-template/banner/banner.png"
+        />
+        <VCardTitle>Welcome to Afak Dashboard</VCardTitle>
+        <VCardText>
+          This dashboard provides you with tools to manage and monitor all aspects of the system efficiently. Use the
+          sidebar to navigate between sections like Students, Invoices, Reports and more.
+        </VCardText>
+        <VCardText>
+          Here’s a quick overview:
+          <ul>
+            <li><strong>Students:</strong> Manage student information and details.</li>
+            <li><strong>Invoices:</strong> Create, track, and update billing information.</li>
+            <li><strong>Teachers:</strong> View and assign class responsibilities.</li>
+            <li><strong>Reports:</strong> Generate and export data for analysis.</li>
+          </ul>
+        </VCardText>
+        <VCardText>
+          <p>For detailed instructions or assistance, contact me:</p>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px">
+            <i class="ri-mail-line"></i>
+            <a
+              target="_blank"
+              href="mailto:baraanayal0@gmail.com"
+              >baraanayal0@gmail.com</a
+            >
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px">
+            <i class="ri-telegram-2-fill"></i>
+            <a
+              target="_blank"
+              href="https://t.me/Baraa_Nayyal"
+              >Baraa Nayyal</a
+            >
+          </div>
+        </VCardText>
+      </VCard>
+
+      <!-- <VCard>
         <VImg src="https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-vuejs-admin-template/banner/banner.png" />
         <VCardTitle>Materio - Vuetify Admin Template</VCardTitle>
         <VCardText>
@@ -43,7 +79,7 @@
             Download
           </VBtn>
         </VCardText>
-      </VCard>
+      </VCard> -->
     </VMenu>
   </a>
 </template>

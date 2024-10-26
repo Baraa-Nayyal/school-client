@@ -51,8 +51,8 @@ const DivisionsPage = ref<InstanceType<typeof Page> | null>(null)
 const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
-    icon: 'tabler-discount-2',
-    title: 'الصفوف والشعب',
+    icon: 'ri-building-2-line',
+    title: 'Classes & Divisions',
   })
 
   store.GetAllDivisions()
@@ -60,8 +60,8 @@ const onLoad = () => {
 }
 
 const headers = [
-  { title: 'الاسم', key: 'name' },
-  { title: 'التفاصيل', value: 'actions', align: 'center' },
+  { title: 'Name', key: 'name' },
+  { title: 'Details', value: 'actions', align: 'center' },
 ]
 
 onLoad()
@@ -113,12 +113,12 @@ const deleteDivision = () => {
     <div class="flex gap-6 justify-between w-full">
       <VCard class="w-full h-fit">
         <div class="flex justify-between p-5">
-          <VCardTitle>الشعب</VCardTitle>
+          <VCardTitle>Divisions</VCardTitle>
           <VCardActions>
             <VBtn
               @click="divisionDialog = true"
               variant="elevated"
-              >إضافة شعبة
+              >Add Division
             </VBtn>
           </VCardActions>
           <VDialog
@@ -130,7 +130,7 @@ const deleteDivision = () => {
           >
             <VCard>
               <div class="p-5 text-lg flex justify-between items-center font-bold">
-                <div>شعبة جديدة</div>
+                <div>New Division</div>
                 <IconBtn
                   icon="tabler-x"
                   variant="plain"
@@ -140,7 +140,7 @@ const deleteDivision = () => {
 
               <main class="p-2">
                 <VTextField
-                  label="اسم الشعبة"
+                  label="Division Name"
                   v-model="divisionDto.name"
                 />
               </main>
@@ -151,13 +151,13 @@ const deleteDivision = () => {
                   @click="submitDivision"
                   variant="flat"
                 >
-                  حفظ
+                  Save
                 </VBtn>
                 <VBtn
                   variant="tonal"
                   @click="closeDiv"
                 >
-                  تراجع
+                  Cancel
                 </VBtn>
                 <VBtn
                   v-if="divisionDto._id"
@@ -165,7 +165,7 @@ const deleteDivision = () => {
                   color="error"
                   @click="deleteDivision"
                 >
-                  حذف
+                  Delete
                 </VBtn>
               </VCardActions>
             </VCard>
@@ -186,12 +186,12 @@ const deleteDivision = () => {
       </VCard>
       <VCard class="w-full h-fit">
         <div class="flex justify-between p-5">
-          <VCardTitle>الصفوف</VCardTitle>
+          <VCardTitle>Classes</VCardTitle>
           <VCardActions>
             <VBtn
               @click="classesDialog = true"
               variant="elevated"
-              >إضافة صف
+              >Add Class
             </VBtn>
           </VCardActions>
           <VDialog
@@ -203,7 +203,7 @@ const deleteDivision = () => {
           >
             <VCard>
               <div class="p-5 text-lg flex justify-between items-center font-bold">
-                <div>صف جديد</div>
+                <div>New Class</div>
                 <IconBtn
                   icon="tabler-x"
                   variant="plain"
@@ -213,12 +213,12 @@ const deleteDivision = () => {
 
               <main class="p-2">
                 <VTextField
-                  label="اسم الصف"
+                  label="Class Name"
                   v-model="classDto.name"
                 />
                 <VSelect
                   class="mt-4"
-                  label="الشعب"
+                  label="Division Name"
                   multiple
                   v-model="classDto.divisionsIds"
                   item-title="name"
@@ -233,13 +233,13 @@ const deleteDivision = () => {
                   @click="submitClass"
                   variant="flat"
                 >
-                  حفظ
+                  Save
                 </VBtn>
                 <VBtn
                   variant="tonal"
                   @click="closeClass"
                 >
-                  تراجع
+                  Cancel
                 </VBtn>
                 <VBtn
                   v-if="classDto._id"
@@ -247,7 +247,7 @@ const deleteDivision = () => {
                   color="error"
                   @click="deleteClass"
                 >
-                  حذف
+                  Delete
                 </VBtn>
               </VCardActions>
             </VCard>

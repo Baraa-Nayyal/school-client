@@ -13,7 +13,7 @@ const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
     icon: 'tabler-discount-2',
-    title: 'السائقين',
+    title: 'Drivers',
   })
 
   store.GetAllDrivers()
@@ -44,7 +44,8 @@ const submit = () => {
     button-text="إضافة سائق"
     dialog-title="سائق جديد"
   >
-    <template #dialog-form>
+  <div>coming soon</div>
+    <!-- <template #dialog-form>
       <div>
         <VTextField
           v-model="driveDto.name"
@@ -70,6 +71,6 @@ const submit = () => {
             <VIcon icon="ri-home-smile-line" />
           </IconBtn>
         </div> </template
-    ></VDataTable>
+    ></VDataTable> -->
   </Page>
 </template>
