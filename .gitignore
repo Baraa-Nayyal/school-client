@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+app.config.ts ⚡️
+
 node_modules
 .DS_Store
 dist-ssr
@@ -14,7 +16,6 @@ dist-ssr
 
 /cypress/videos/
 /cypress/screenshots/
-
 # 👉 Custom Git ignores
 
 # Editor directories and files
