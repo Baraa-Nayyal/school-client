@@ -40,10 +40,7 @@ const login = () => {
       max-width="448"
     >
       <VCardItem class="justify-center">
-        <RouterLink
-          to="/"
-          class="d-flex align-center gap-3"
-        >
+        <div class="flex gap-2 items-center">
           <!-- eslint-disable vue/no-v-html -->
           <!-- <div
             class="d-flex"
@@ -52,11 +49,11 @@ const login = () => {
           <div class="w-20 h-20">
             <img
               class="w-full h-full object-contain"
-              src="../assets/images/afakLogo.svg"
+              src="/afakLogo.svg"
             />
           </div>
           <h2 class="font-weight-medium text-4xl">Afak</h2>
-        </RouterLink>
+        </div>
       </VCardItem>
 
       <VCardText class="pt-2">
