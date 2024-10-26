@@ -1,0 +1,1 @@
+import{_ as o,l as t,h as n,k as a,I as c}from"./index-Ba3BICnt.js";const r={},s={class:"layout-wrapper layout-blank"};function _(l,p){const e=c("RouterView");return a(),t("div",s,[n(e)])}const u=o(r,[["render",_]]);export{u as default};
