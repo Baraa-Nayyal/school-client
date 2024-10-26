@@ -76,7 +76,7 @@ const Logout = () => {
           <div class="w-10 h-10">
             <img
               class="w-full h-full object-contain"
-              src="../../assets/images/afakLogo.svg"
+              src="/afakLogo.svg"
             />
           </div>
         </div>
