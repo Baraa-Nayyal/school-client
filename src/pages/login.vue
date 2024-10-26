@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify'
-import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
 
-import logo from '@images/logo.svg?raw'
+import { useAuth } from '@/composable/useAuth'
 import authV1MaskDark from '@images/pages/auth-v1-mask-dark.png'
 import authV1MaskLight from '@images/pages/auth-v1-mask-light.png'
 import authV1Tree2 from '@images/pages/auth-v1-tree-2.png'
 import authV1Tree from '@images/pages/auth-v1-tree.png'
-import { useAuth } from '@/composable/useAuth'
 
 const form = ref({
   username: 'user',
@@ -15,25 +13,21 @@ const form = ref({
 })
 
 const vuetifyTheme = useTheme()
-const { Login } = useAuth();
+const { Login } = useAuth()
 
 const authThemeMask = computed(() => {
-  return vuetifyTheme.global.name.value === 'light'
-    ? authV1MaskLight
-    : authV1MaskDark
+  return vuetifyTheme.global.name.value === 'light' ? authV1MaskLight : authV1MaskDark
 })
 
 const isPasswordVisible = ref(false)
 
 const login = () => {
-  Login(form.value)
-    .then((response) => {
-      if (response.status == 200) {
-        // router.push("/");
-      } else {
-      }
-    })
-  
+  Login(form.value).then(response => {
+    if (response.status == 200) {
+      // router.push("/");
+    } else {
+    }
+  })
 }
 </script>
 
@@ -51,23 +45,23 @@ const login = () => {
           class="d-flex align-center gap-3"
         >
           <!-- eslint-disable vue/no-v-html -->
-          <div
+          <!-- <div
             class="d-flex"
             v-html="logo"
-          />
-          <h2 class="font-weight-medium text-2xl text-uppercase">
-            Materio
-          </h2>
+          /> -->
+          <div class="w-20 h-20">
+            <img
+              class="w-full h-full object-contain"
+              src="../assets/images/afakLogo.svg"
+            />
+          </div>
+          <h2 class="font-weight-medium text-4xl">Afak</h2>
         </RouterLink>
       </VCardItem>
 
       <VCardText class="pt-2">
-        <h4 class="text-h4 mb-1">
-          Welcome! 👋🏻
-        </h4>
-        <p class="mb-0">
-          Please sign-in to your account and start the adventure
-        </p>
+        <h4 class="text-h4 mb-1">Welcome! 👋🏻</h4>
+        <p class="mb-0">Please sign-in to your account and start the adventure</p>
       </VCardText>
 
       <VCardText>
@@ -118,8 +112,7 @@ const login = () => {
               </VBtn>
             </VCol>
 
-            <!-- create account -->
-            <VCol
+            <!-- <VCol
               cols="12"
               class="text-center text-base"
             >
@@ -141,13 +134,12 @@ const login = () => {
               <VDivider />
             </VCol>
 
-            <!-- auth providers -->
             <VCol
               cols="12"
               class="text-center"
             >
               <AuthProvider />
-            </VCol>
+            </VCol> -->
           </VRow>
         </VForm>
       </VCardText>
@@ -174,5 +166,5 @@ const login = () => {
 </template>
 
 <style lang="scss">
-@use "@core/scss/template/pages/page-auth";
+@use '@core/scss/template/pages/page-auth';
 </style>
