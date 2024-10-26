@@ -1,4 +1,4 @@
-const isLocal = ref(true)
+const isLocal = ref(false)
 
 const HOST_DOMAIN = isLocal.value ? 'http://localhost:3000' : 'https://afak-server.vercel.app'
 
