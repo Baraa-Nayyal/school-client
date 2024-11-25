@@ -16,13 +16,15 @@ const addInvoiceDto = ref(new AddInvoiceDto())
 
 const { invoicesList } = storeToRefs(store)
 
+const loading = ref(true)
+
 const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
     icon: 'ri-cash-line',
     title: 'Invoices',
   })
-  store.GetInvoices().then(() => {
+  store.GetInvoices().finally(() => {
     invoicesList.value = invoicesList.value.map(invoice => ({
       ...invoice,
       schoolPrice: invoice.schoolPrice.toLocaleString(),
@@ -30,6 +32,8 @@ const onLoad = () => {
       totalAmount: invoice.totalAmount.toLocaleString(),
       remainingAmount: invoice.remainingAmount.toLocaleString(),
     }))
+
+    loading.value = false
   })
 }
 
@@ -135,6 +139,7 @@ const search = (val: string) => {
     <VDataTable
       :headers="(headers as any)"
       :items="invoicesList"
+      :loading="loading"
     >
       <template #item.actions="{ item }">
         <div class="d-flex gap-1 justify-center">

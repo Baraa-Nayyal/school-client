@@ -12,6 +12,8 @@ const classesStore = useDivisionsStore()
 const { studentsList, familiesList, studentsNamesList } = storeToRefs(store)
 const { classesList } = storeToRefs(classesStore)
 
+const loading = ref(true)
+const loadingFamily = ref(true)
 const onLoad = () => {
   useAppStore().SetPageMeta({
     breadCrumb: [],
@@ -19,8 +21,12 @@ const onLoad = () => {
     title: 'Students',
   })
 
-  store.GetAllStudents()
-  store.GetAllFamilies()
+  store.GetAllStudents().finally(() => {
+    loading.value = false
+  })
+  store.GetAllFamilies().finally(() => {
+    loadingFamily.value = false
+  })
   // TODO:
 }
 onLoad()
@@ -193,6 +199,7 @@ const search = (val: string) => {
     </template>
     <div class="flex flex-col gap-3">
       <VDataTable
+        :loading="loading"
         :headers="(headers as any)"
         :items="studentsList"
       >
@@ -211,6 +218,7 @@ const search = (val: string) => {
         </template>
       </VDataTable>
       <VDataTable
+        :loading="loadingFamily"
         :headers="(headers2 as any)"
         :items="familiesList"
       >
