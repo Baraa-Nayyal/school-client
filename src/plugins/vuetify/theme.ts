@@ -39,6 +39,7 @@ export const themes: Record<string, ThemeDefinition> = {
       'grey-700': '#616161',
       'grey-800': '#424242',
       'grey-900': '#212121',
+      'white-100': '#fff',
       'perfect-scrollbar-thumb': '#dbdade',
       'skin-bordered-background': '#fff',
       'skin-bordered-surface': '#fff',
