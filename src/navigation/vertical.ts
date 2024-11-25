@@ -7,6 +7,7 @@ export const navigation: NavRoute[] = [
     icon: 'ri-home-smile-line',
     component: () => import('@/pages/students/students.vue'),
   },
+
   {
     title: 'Classes',
     to: '/classes',
@@ -18,6 +19,12 @@ export const navigation: NavRoute[] = [
     to: '/invoices',
     icon: 'ri-home-smile-line',
     component: () => import('@/pages/invoices/invoices.vue'),
+  },
+  {
+    title: 'Analysis',
+    to: '/analysis',
+    icon: 'ri-home-smile-line',
+    component: () => import('@/pages/analysis/analysis.vue'),
   },
   {
     title: 'Drivers',

@@ -4,19 +4,16 @@ import { registerPlugins } from '@core/utils/plugins'
 import { createApp } from 'vue'
 import Toast, { PluginOptions } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
+import VueApexCharts from 'vue3-apexcharts'
 
-// Styles
 import '@core/scss/template/index.scss'
 import '@layouts/styles/index.scss'
 
-// Create vue app
 const app = createApp(App)
 const options: PluginOptions = {
-  // Customize your toast options here
 }
-// Register plugins
 registerPlugins(app)
 app.use(Toast, options)
+app.component('VueApexCharts', VueApexCharts)
 
-// Mount vue app
 app.mount('#app')
