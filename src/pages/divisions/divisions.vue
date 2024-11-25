@@ -14,6 +14,9 @@ const classDto = ref(new ClassDto())
 
 const toast = useToast()
 
+const loadingDivisions = ref(true)
+const loadingClasses = ref(true)
+
 const { divisionsList, classesList } = storeToRefs(store)
 
 const submitDivision = () => {
@@ -55,8 +58,12 @@ const onLoad = () => {
     title: 'Classes & Divisions',
   })
 
-  store.GetAllDivisions()
-  store.GetAllClasses()
+  store.GetAllDivisions().finally(() => {
+    loadingDivisions.value = false
+  })
+  store.GetAllClasses().finally(() => {
+    loadingClasses.value = false
+  })
 }
 
 const headers = [
@@ -174,6 +181,7 @@ const deleteDivision = () => {
         <VDataTable
           :items-per-page="-1"
           :items="divisionsList"
+          :loading="loadingDivisions"
           :headers="(headers as any)"
         >
           <template #item.actions="{ item }">
@@ -256,6 +264,7 @@ const deleteDivision = () => {
         <VDataTable
           :items-per-page="-1"
           :items="classesList"
+          :loading="loadingClasses"
           :headers="(headers as any)"
         >
           <template #item.actions="{ item }">
